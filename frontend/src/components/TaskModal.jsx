@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { X, Play, Pause, Square, Plus, Trash, BrainCircuit, RefreshCw, Clock } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
   const { updateUserStats } = useContext(AuthContext);
@@ -134,7 +134,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
       });
       
       // Request updated predictions from AI server
-      const nlpRes = await axios.post('http://localhost:5000/api/tasks', {
+      const nlpRes = await axios.post(`${API_URL}/tasks`, {
         boardId: task.boardId,
         columnId: task.columnId,
         title,

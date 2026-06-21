@@ -9,7 +9,7 @@ import GamificationStore from './components/GamificationStore';
 import axios from 'axios';
 import { Layout, Plus, Loader, LogIn, Lock, Mail, User as UserIcon } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
