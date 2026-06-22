@@ -169,7 +169,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
       <div className="w-full max-w-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
         
         {/* Left Side: Editor Form */}
-        <div className="flex-1 p-6 overflow-y-auto border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-850">
+        <div className="flex-1 p-6 overflow-y-auto border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800">
           <div className="flex justify-between items-center mb-4">
             <input
               type="text"
@@ -239,7 +239,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-2 text-xs text-slate-700 dark:text-slate-350 focus:border-indigo-500 focus:outline-none"
+                className="mt-1 block w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-2 text-xs text-slate-700 dark:text-slate-300 focus:border-indigo-500 focus:outline-none"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -252,7 +252,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
                 type="date"
                 value={deadline}
                 onChange={(e) => setDeadline(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-2 text-xs text-slate-700 dark:text-slate-350 focus:border-indigo-500 focus:outline-none"
+                className="mt-1 block w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-2 text-xs text-slate-700 dark:text-slate-300 focus:border-indigo-500 focus:outline-none"
               />
             </div>
           </div>
@@ -326,7 +326,7 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
                   setIsTimerRunning(false);
                   setTimerSeconds(0);
                 }}
-                className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-350 text-xs font-bold transition-colors"
+                className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold transition-colors"
               >
                 <Square size={10} className="fill-current" />
                 <span>Reset</span>
@@ -344,16 +344,16 @@ const TaskModal = ({ task, onClose, onUpdate, onDelete }) => {
               
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-450 dark:text-slate-500">Estimate:</span>
+                  <span className="text-slate-500 dark:text-slate-500">Estimate:</span>
                   <span className="font-bold text-slate-700 dark:text-indigo-400">{task.aiPredictedTime || 'N/A'} Hours</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-450 dark:text-slate-500">Difficulty:</span>
-                  <span className="font-bold text-slate-700 dark:text-slate-350 capitalize">{task.aiDifficulty || 'medium'}</span>
+                  <span className="text-slate-500 dark:text-slate-500">Difficulty:</span>
+                  <span className="font-bold text-slate-700 dark:text-slate-300 capitalize">{task.aiDifficulty || 'medium'}</span>
                 </div>
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-450 dark:text-slate-500">Risk Level:</span>
-                  <span className={`font-bold capitalize ${task.aiRiskLevel === 'high' ? 'text-red-400 animate-pulse' : 'text-slate-700 dark:text-slate-350'}`}>
+                  <span className="text-slate-500 dark:text-slate-500">Risk Level:</span>
+                  <span className={`font-bold capitalize ${task.aiRiskLevel === 'high' ? 'text-red-400 animate-pulse' : 'text-slate-700 dark:text-slate-300'}`}>
                     {task.aiRiskLevel || 'low'}
                   </span>
                 </div>

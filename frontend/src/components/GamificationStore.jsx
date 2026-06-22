@@ -96,14 +96,14 @@ const GamificationStore = () => {
               className={`glass-panel p-5 rounded-2xl border bg-white dark:bg-slate-900/60 shadow-sm transition-all duration-300 relative overflow-hidden flex items-center space-x-4 ${
                 isUnlocked 
                   ? 'border-slate-200 dark:border-slate-800 opacity-100 scale-100'
-                  : 'border-slate-200/40 dark:border-slate-850 opacity-40 grayscale select-none'
+                  : 'border-slate-200/40 dark:border-slate-800 opacity-40 grayscale select-none'
               }`}
             >
               {/* Badge Icon */}
               <div className={`p-3 rounded-xl text-white bg-gradient-to-tr shadow-lg ${
                 isUnlocked ? badge.color : 'from-slate-700 to-slate-800 shadow-slate-800/10'
               }`}>
-                <IconComponent size={22} className={isUnlocked ? 'animate-bounce' : ''} style={{ animationDuration: '3.s' }} />
+                <IconComponent size={22} className={isUnlocked ? 'animate-bounce' : ''} style={{ animationDuration: '3s' }} />
               </div>
 
               {/* Text */}

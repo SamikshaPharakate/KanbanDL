@@ -56,15 +56,19 @@ router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
+    if (!username || !username.trim() || !email || !email.trim() || !password) {
+      return res.status(400).json({ msg: 'Please enter all fields' });
+    }
+
     // Check if user exists
-    let user = await User.findOne({ $or: [{ email }, { username }] });
+    let user = await User.findOne({ $or: [{ email: email.trim().toLowerCase() }, { username: username.trim() }] });
     if (user) {
       return res.status(400).json({ msg: 'User with this email or username already exists' });
     }
 
     user = new User({
-      username,
-      email,
+      username: username.trim(),
+      email: email.trim(),
       password,
       xp: 0,
       level: 1,
@@ -101,11 +105,16 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    if (!email || !email.trim() || !password) {
+      return res.status(400).json({ msg: 'Please enter all fields' });
+    }
+
+    const emailStr = email.trim();
     // Find user by email or username
     let user = await User.findOne({
       $or: [
-        { email: email.toLowerCase() },
-        { username: email }
+        { email: emailStr.toLowerCase() },
+        { username: emailStr }
       ]
     });
     

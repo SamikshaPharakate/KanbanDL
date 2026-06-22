@@ -258,7 +258,7 @@ const BoardsSelection = () => {
               </button>
               <button
                 type="submit"
-                className="text-xs font-semibold bg-indigo-600 hover:bg-indigo-505 text-white px-4 py-2 rounded-lg shadow-lg transition-colors"
+                className="text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-lg transition-colors"
               >
                 Create Board
               </button>

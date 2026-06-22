@@ -132,7 +132,7 @@ const AnalyticsDashboard = () => {
                   className={`w-10 h-14 rounded-lg flex flex-col items-center justify-between py-2 border transition-all duration-200 ${
                     energy === lvl
                       ? 'bg-amber-500/10 border-amber-500 text-amber-500 scale-110 shadow-md shadow-amber-500/10 font-bold'
-                      : 'border-slate-200 dark:border-slate-800 hover:border-slate-350 dark:hover:border-slate-700 text-slate-400'
+                      : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 text-slate-400'
                   }`}
                 >
                   <span className="text-[10px] font-bold">{lvl}</span>
@@ -180,7 +180,7 @@ const AnalyticsDashboard = () => {
 
           <div className="border-t border-slate-100 dark:border-slate-800/60 pt-4 text-xs text-slate-500 flex justify-between items-center">
             <span>Summary:</span>
-            <span className="font-bold text-slate-700 dark:text-slate-350">
+            <span className="font-bold text-slate-700 dark:text-slate-300">
               {weeklyLogs.length} Days logged
             </span>
           </div>
@@ -193,7 +193,7 @@ const AnalyticsDashboard = () => {
         
         {/* Chart 1: Focus Score Trend */}
         <div className="glass-panel p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm h-96 flex flex-col">
-          <h3 className="text-xs font-bold text-slate-450 uppercase mb-4 tracking-wider flex items-center space-x-1.5">
+          <h3 className="text-xs font-bold text-slate-500 uppercase mb-4 tracking-wider flex items-center space-x-1.5">
             <Calendar size={13} />
             <span>Focus Score Progression</span>
           </h3>

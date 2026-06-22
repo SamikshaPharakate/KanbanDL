@@ -291,7 +291,7 @@ const KanbanBoard = ({ boardId }) => {
                 <div className="p-3.5 flex justify-between items-center border-b border-slate-200/50 dark:border-slate-800/50 bg-slate-100/40 dark:bg-slate-900/30">
                   <div className="flex items-center space-x-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">{col.name}</span>
-                    <span className="bg-slate-250 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-1.5 py-0.2 rounded text-[10px] font-bold">
+                    <span className="bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded text-[10px] font-bold">
                       {colTasks.length}
                     </span>
                   </div>
@@ -338,7 +338,7 @@ const KanbanBoard = ({ boardId }) => {
                             </button>
                             <button
                               onClick={() => handleCreateTask(col._id)}
-                              className="text-[10px] font-bold bg-indigo-600 hover:bg-indigo-505 text-white px-2.5 py-1 rounded shadow transition-colors"
+                              className="text-[10px] font-bold bg-indigo-600 hover:bg-indigo-500 text-white px-2.5 py-1 rounded shadow transition-colors"
                             >
                               Add
                             </button>
@@ -376,7 +376,7 @@ const KanbanBoard = ({ boardId }) => {
                 placeholder="Column name..."
                 value={newColumnName}
                 onChange={(e) => setNewColumnName(e.target.value)}
-                className="w-full text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-2.5 focus:border-indigo-500 focus:outline-none text-slate-800 dark:text-slate-250"
+                className="w-full text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-2.5 focus:border-indigo-500 focus:outline-none text-slate-800 dark:text-slate-200"
               />
               <div className="flex justify-end space-x-2 mt-3">
                 <button
@@ -388,7 +388,7 @@ const KanbanBoard = ({ boardId }) => {
                 </button>
                 <button
                   type="submit"
-                  className="text-xs font-semibold bg-indigo-600 hover:bg-indigo-505 text-white px-3.5 py-1.5 rounded-lg shadow-lg shadow-indigo-500/10 transition-colors"
+                  className="text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-3.5 py-1.5 rounded-lg shadow-lg shadow-indigo-500/10 transition-colors"
                 >
                   Add Column
                 </button>

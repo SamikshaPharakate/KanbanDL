@@ -27,9 +27,13 @@ router.post('/', auth, async (req, res) => {
   const { name, description } = req.body;
 
   try {
+    if (!name || !name.trim()) {
+      return res.status(400).json({ msg: 'Board name is required' });
+    }
+
     const newBoard = new Board({
-      name,
-      description,
+      name: name.trim(),
+      description: description ? description.trim() : '',
       owner: req.user.id
     });
 
