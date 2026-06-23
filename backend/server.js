@@ -11,16 +11,21 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-// Initialize Socket.io with CORS parameters matching frontend Vite development server port (5173)
+// CORS: allow comma-separated origins from env (for production), or fallback to localhost for dev
+const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : ['http://localhost:5173'];
+
+// Initialize Socket.io with CORS
 const io = socketio(server, {
   cors: {
-    origin: '*',
+    origin: ALLOWED_ORIGINS,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 });
 
 // Middlewares
-app.use(cors());
+app.use(cors({ origin: ALLOWED_ORIGINS }));
 app.use(express.json());
 
 // Import Sockets
