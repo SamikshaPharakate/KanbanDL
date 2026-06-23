@@ -50,7 +50,14 @@ app.get('/', (req, res) => {
 
 // Database Connection & Server Startup
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/taskflow';
+const MONGO_URI = process.env.MONGO_URI;
+
+// Fail fast if MONGO_URI is not configured — prevents silent localhost fallback
+if (!MONGO_URI) {
+  console.error('FATAL ERROR: MONGO_URI environment variable is not set.');
+  console.error('Set MONGO_URI to your MongoDB Atlas connection string in the Render dashboard.');
+  process.exit(1);
+}
 
 mongoose.connect(MONGO_URI)
   .then(() => {
@@ -61,5 +68,6 @@ mongoose.connect(MONGO_URI)
   })
   .catch((err) => {
     console.error('Database connection failed:', err.message);
+    console.error('Check that your MONGO_URI is correct and that your MongoDB Atlas cluster allows connections from 0.0.0.0/0.');
     process.exit(1);
   });
