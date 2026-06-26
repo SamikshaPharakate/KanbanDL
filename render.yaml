@@ -13,7 +13,7 @@ services:
       - key: JWT_SECRET
         sync: false   # Set this in the Render dashboard — never commit secrets
       - key: ALLOWED_ORIGINS
-        sync: false   # Set to your Vercel frontend URL, e.g. https://kanbandl.vercel.app
+        value: https://kanban-m8tee2oy-samikshaspharakate070515-8116s.projects.vercel.app
       - key: AI_BACKEND_URL
         sync: false   # Set to your AI backend URL if deployed separately
     healthCheckPath: /
