@@ -17,3 +17,13 @@ services:
       - key: AI_BACKEND_URL
         sync: false   # Set to your AI backend URL if deployed separately
     healthCheckPath: /
+
+  - type: web
+    name: kanbandl-ai-backend
+    runtime: python
+    rootDir: ai-backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
