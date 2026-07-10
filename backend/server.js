@@ -20,12 +20,17 @@ const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS
 const io = socketio(server, {
   cors: {
     origin: ALLOWED_ORIGINS,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
   }
 });
 
 // Middlewares
-app.use(cors({ origin: ALLOWED_ORIGINS }));
+app.use(cors({
+  origin: ALLOWED_ORIGINS,
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Import Sockets

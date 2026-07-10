@@ -15,8 +15,8 @@ export const SocketProvider = ({ children }) => {
     if (token) {
       // Connect to Socket.io backend
       newSocket = io(SOCKET_URL, {
-        transports: ['websocket'],
-        upgrade: false
+        transports: ['polling', 'websocket'],
+        // Allow upgrade from polling → websocket (Render proxy compatible)
       });
       
       setSocket(newSocket);

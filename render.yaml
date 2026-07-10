@@ -6,16 +6,18 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: PORT
-        value: 5000
+        value: 10000          # Render assigns $PORT dynamically; this is just a default
       - key: MONGO_URI
-        sync: false   # Set this in the Render dashboard — never commit secrets
+        sync: false           # Set this in the Render dashboard — never commit secrets
       - key: JWT_SECRET
-        sync: false   # Set this in the Render dashboard — never commit secrets
+        sync: false           # Set this in the Render dashboard — never commit secrets
       - key: ALLOWED_ORIGINS
         value: https://kanban-six-eta.vercel.app,https://kanban-m8tee2oy-samikshaspharakate070515-8116s.projects.vercel.app
       - key: AI_BACKEND_URL
-        sync: false   # Set to your AI backend URL if deployed separately
+        sync: false           # Set to your AI backend Render URL, e.g. https://kanbandl-ai-backend.onrender.com
     healthCheckPath: /
 
   - type: web
@@ -27,3 +29,5 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
+      - key: GEMINI_API_KEY
+        sync: false           # Set this in the Render dashboard if using Gemini for subtask generation

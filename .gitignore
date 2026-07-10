@@ -10,6 +10,12 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# Explicitly protect secrets in sub-packages
+backend/.env
+backend/.env.*
+ai-backend/.env
+ai-backend/.env.*
+
 # Python
 venv/
 .venv/
