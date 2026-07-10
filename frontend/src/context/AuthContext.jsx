@@ -5,6 +5,9 @@ export const AuthContext = createContext();
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
+// Debug: log which API URL is being used (visible in browser console)
+console.log('[AuthContext] API URL:', API_URL);
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -45,9 +48,16 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user);
       return { success: true };
     } catch (err) {
+      console.error('[Register Error]', err);
+      // Show specific error: server message → network/CORS message → fallback
+      const serverMsg = err.response?.data?.msg;
+      const networkMsg = err.code === 'ERR_NETWORK' || err.message === 'Network Error'
+        ? `Cannot reach server at ${API_URL}. Check if backend is running.`
+        : null;
+      const corsMsg = err.message?.includes('CORS') ? 'CORS error — backend rejecting frontend origin.' : null;
       return {
         success: false,
-        message: err.response?.data?.msg || 'Registration failed'
+        message: serverMsg || corsMsg || networkMsg || `Error: ${err.message}`
       };
     }
   };
@@ -60,9 +70,14 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user);
       return { success: true };
     } catch (err) {
+      console.error('[Login Error]', err);
+      const serverMsg = err.response?.data?.msg;
+      const networkMsg = err.code === 'ERR_NETWORK' || err.message === 'Network Error'
+        ? `Cannot reach server at ${API_URL}. Check if backend is running.`
+        : null;
       return {
         success: false,
-        message: err.response?.data?.msg || 'Login failed'
+        message: serverMsg || networkMsg || `Error: ${err.message}`
       };
     }
   };
