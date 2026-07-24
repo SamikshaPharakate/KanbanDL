@@ -11,39 +11,17 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-// Dynamic CORS function allowing configured origins, localhost, and any *.vercel.app domain
+// Dynamic CORS delegate: reflects request origin dynamically to allow all frontend domains seamlessly with credentials
 const corsOriginDelegate = (origin, callback) => {
-  if (!origin) return callback(null, true);
-
-  const configuredOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
-    : [];
-
-  const defaultAllowed = [
-    'http://localhost:5173',
-    'http://localhost:3000',
-    'https://kanban-dl.vercel.app',
-    'https://kanban-six-eta.vercel.app'
-  ];
-
-  if (
-    configuredOrigins.includes(origin) ||
-    defaultAllowed.includes(origin) ||
-    origin.endsWith('.vercel.app') ||
-    origin.includes('localhost') ||
-    origin.includes('127.0.0.1')
-  ) {
-    return callback(null, true);
-  }
-
-  callback(new Error(`CORS blocked for origin: ${origin}`));
+  // Always return true to reflect origin (compatible with credentials: true)
+  return callback(null, true);
 };
 
 // Initialize Socket.io with CORS
 const io = socketio(server, {
   cors: {
     origin: corsOriginDelegate,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
   }
 });
@@ -52,7 +30,7 @@ const io = socketio(server, {
 app.use(cors({
   origin: corsOriginDelegate,
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
 }));
 app.use(express.json());
 
