@@ -7,7 +7,7 @@ import TaskCard from './TaskCard';
 import TaskModal from './TaskModal';
 import { Plus, X, Brain, CheckCircle2, ChevronRight, HelpCircle } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://kanbandl.onrender.com/api';
 
 const KanbanBoard = ({ boardId }) => {
   const { socket, joinBoard, leaveBoard } = useContext(SocketContext);

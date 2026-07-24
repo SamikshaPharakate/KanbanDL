@@ -3,7 +3,7 @@ import axios from 'axios';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Calendar, Brain, ShieldAlert, Heart, Battery } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://kanbandl.onrender.com/api';
 
 const AnalyticsDashboard = () => {
   const [weeklyLogs, setWeeklyLogs] = useState([]);
